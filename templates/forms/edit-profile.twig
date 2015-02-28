@@ -1,0 +1,25 @@
+{% extends 'forms/register.twig' %}
+
+{% block form_header %}
+<form class="form-horizontal" action="index.php?mode=profile-edit-post" method="post" data-ajax-form>
+{% endblock %}
+
+{% block passwords %}
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="password">Изменить пароль</label>
+        <div class="col-md-9">
+            <input name="password" type="password" class="form-control" id="password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="password_repeat">Повторить пароль</label>
+        <div class="col-md-9">
+            <input name="password_repeat" type="password" class="form-control" id="password_repeat">
+        </div>
+    </div>
+{% endblock %}
+    
+    
+{% block submit %}
+    <input type="submit" class="btn btn-primary" value="Обновить профиль">
+{% endblock %}

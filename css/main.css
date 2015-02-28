@@ -1,0 +1,4 @@
+.edit-link,
+.delete-link {
+    cursor: pointer;
+}

@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-8">
+        {% block form_header %}
+        <form class="form-horizontal" action="index.php?mode=register-post" method="post" data-ajax-form-response="registerResponse" data-ajax-form>
+        {% endblock %}
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="first_name">Имя</label>
+                <div class="col-md-9">
+                    <input name="first_name" type="text" value="{{ account.first_name }}" class="form-control" id="first_name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="last_name">Фамилия</label>
+                <div class="col-md-9">
+                    <input name="last_name" type="text" value="{{ account.last_name }}" class="form-control" id="last_name" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="login">Логин</label>
+                <div class="col-md-9">
+                    <input name="login" type="text" value="{{ account.login }}" class="form-control" id="login" required
+                            {% if (account.id) %}readonly{% endif %}>
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="email">Email</label>
+                <div class="col-md-9">
+                    <input name="email" type="email" value="{{ account.email }}" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="tel">Телефон</label>
+                <div class="col-md-9">
+                    <input name="tel" type="text" value="{{ account.tel }}" class="form-control" id="tel">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="birth_date">Дата рождения</label>
+                <div class="col-md-9">
+                    <input name="birth_date" type="date" value="{{ account.birth_date }}" class="form-control" id="birth_date">
+                </div>
+            </div>
+            
+            {% block passwords %}
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="password">Пароль</label>
+                    <div class="col-md-9">
+                        <input name="password" type="password" class="form-control" id="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="password_repeat">Повторить пароль</label>
+                    <div class="col-md-9">
+                        <input name="password_repeat" type="password" class="form-control" id="password_repeat" required>
+                    </div>
+                </div>
+            {% endblock %}
+
+            <footer class="form-footer">
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-3">
+                        {% block submit %}
+                            <input type="submit" class="btn btn-primary" value="Зарегистрироваться">
+                        {% endblock %}
+                    </div>
+                </div>
+            </footer>
+        </form>
+    </div>
+</div>
