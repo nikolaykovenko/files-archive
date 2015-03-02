@@ -67,7 +67,7 @@ class UserFiles extends AModel
 
     /**
      * Параметр, отвечающий за хранение всей истории записей модели в специальной таблице
-     * @return true
+     * @return bool
      */
     public function saveDataHistory()
     {

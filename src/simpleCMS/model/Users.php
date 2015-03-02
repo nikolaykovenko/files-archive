@@ -126,7 +126,7 @@ class Users extends AModel implements IdentifyInterface
 
     /**
      * Параметр, отвечающий за хранение всей истории записей модели в специальной таблице
-     * @return true
+     * @return bool
      */
     public function saveDataHistory()
     {

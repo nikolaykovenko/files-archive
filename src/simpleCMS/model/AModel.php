@@ -245,6 +245,10 @@ abstract class AModel
      */
     private function insertItemToHistoryTable(\stdClass $instance)
     {
+        if (!$this->saveDataHistory()) {
+            return true;
+        }
+        
         if (!isset($instance->id) or empty($instance->id)) {
             return false;
         }
@@ -276,7 +280,7 @@ abstract class AModel
 
     /**
      * Параметр, отвечающий за хранение всей истории записей модели в специальной таблице
-     * @return true
+     * @return bool
      */
     abstract public function saveDataHistory();
 }
