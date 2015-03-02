@@ -27,5 +27,5 @@ return [
     'maxFilesCount' => 20,
     
 //    Максимальный размер файла в байтах
-    'maxFileSize' => 2 * 1024 * 1024,
+    'maxFileSize' => 1 * 1024 * 1024,
 ];
