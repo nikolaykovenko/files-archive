@@ -9,11 +9,21 @@ function updateFilesList() {
     });
 }
 
+function deleteFile(id) {
+    if (confirm('Вы действительно хотите удалить файл?')) {
+        $('[data-files-list] [data-delete-item="' + id + '"]').parents('tr').addClass('danger');
+        
+        ajaxQuery({'mode': 'FileDelete', 'id': id}, function () {
+            updateFilesList();
+        });
+    }
+}
+
 $(function() {
     updateFilesList();
     
     $('[data-files-list]').on('click', '[data-delete-item]', function (e) {
-        alert($(this).data('delete-item'));
+        deleteFile($(this).data('delete-item'));
     });
 
 

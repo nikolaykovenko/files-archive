@@ -73,6 +73,30 @@ class UserFiles extends AModel
     {
         return false;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function deleteItem($itemId)
+    {
+        $item = $this->findOne("`id` = :id", ['id' => $itemId]);
+        if (empty($item)) {
+            throw new \Exception('Элемент не найден');
+        }
+        
+        if (!empty($item->file)) {
+            $file = $this->appHelper->getConfigParam('filesDir') . $item->file;
+            if (file_exists($file)) {
+                if (!unlink($file)) {
+                    throw new \Exception('Не удалось удалить файл');
+                }
+            }
+        }
+        
+        $item->deleted = 1;
+        
+        return $this->updateItem($item);
+    }
     
     
     
