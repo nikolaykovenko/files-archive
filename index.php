@@ -22,6 +22,7 @@ $appHelper->setConfig($config);
  */
 $appHelper
     ->setComponent('fileSender', new \simpleCMS\core\FileSender())
+    ->setComponent('fileSize', new \simpleCMS\core\FileSize())
     ->setComponent('dataHistory', new \simpleCMS\model\DataHistory())
     ->setComponent('usersModel', new \simpleCMS\model\Users())
     ->setComponent('authAgent', new \simpleCMS\auth\AuthAgent($appHelper->getComponent('usersModel')));

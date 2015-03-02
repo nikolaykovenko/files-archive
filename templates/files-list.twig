@@ -15,7 +15,7 @@
     {% for item in filesList %}
         <tr{% if item.deleted %} class="danger"{% endif %}>
             <td>{{ item.file_name }}</td>
-            <td>-</td>
+            <td>{{ item.size|default('-') }}</td>
             <td style="width: 200px;">{{ item.add_time|date }}</td>
             <td style="width: 150px;" class="text-center">
                 {% if item.deleted %}

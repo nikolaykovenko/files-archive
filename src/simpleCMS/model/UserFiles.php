@@ -25,6 +25,23 @@ class UserFiles extends AModel
     }
     
     /**
+     * @inheritdoc
+     */
+    public function findAll($where = '', $whereValues = [])
+    {
+        $result = parent::findAll($where, $whereValues);
+        $fileSize = $this->appHelper->getComponent('fileSize');
+        
+        foreach ($result as &$item) {
+            if (!$item->deleted) {
+                $item->size =  $fileSize::getPrettyFileSize($item->file);
+            }
+        }
+        
+        return $result;
+    }
+
+    /**
      * Возвращает количество загруженных файлов пользователя
      * @param int $userId
      * @return int
