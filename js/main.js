@@ -16,6 +16,14 @@ function registerResponse(result, form) {
     }
 }
 
+function ajaxQuery(data, response) {
+    if (!response) {
+        response = ajaxDefaultResponse;
+    }
+
+    return $.get('index.php', data, response);
+}
+
 
 $(function () {
     $('body').on('submit', 'form[data-ajax-form]', function (e) {

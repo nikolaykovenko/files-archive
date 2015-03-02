@@ -1,0 +1,31 @@
+<table class="table table-condensed table-hover">
+    <thead>
+    <tr>
+        <th>Файл</th>
+        <th>Размер</th>
+        <th>Дата загрузки</th>
+        <th>Операции</th>
+    </thead>
+    <tfoot>
+    <tr>
+        <td colspan="4">Всего файлов: <span data-files-uploaded>{{ filesUploadedCount }}</span></td>
+    </tr>
+    </tfoot>
+    <tbody>
+    {% for item in filesList %}
+        <tr{% if item.deleted %} class="danger"{% endif %}>
+            <td>{{ item.file_name }}</td>
+            <td>-</td>
+            <td style="width: 200px;">{{ item.add_time|date }}</td>
+            <td style="width: 150px;" class="text-center">
+                {% if item.deleted %}
+                    [Файл удален]
+                {% else %}
+                    <a href="index.php?mode=download-file&amp;file={{ item.id }}"><span class="glyphicon glyphicon-download-alt"></span></a>
+                    <span class="glyphicon glyphicon-trash delete-link" data-delete-item="{{ item.id }}"></span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

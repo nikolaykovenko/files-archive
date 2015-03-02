@@ -205,7 +205,8 @@ abstract class AModel
     private function selectQueryExecute($where = '', $whereValues = [])
     {
         $sth = $this->dbh->prepare(
-            $query = "select * from {$this->getTableName()}" . (!empty($where) ? " where " . $where : '')
+            "select * from {$this->getTableName()}" . (!empty($where) ? " where " . $where : '') .
+            " order by " . $this->orderBy()
         );
         $sth->setFetchMode(\PDO::FETCH_OBJ);
         $sth->execute($whereValues);
@@ -219,13 +220,22 @@ abstract class AModel
      * @return bool
      * @throws \Exception
      */
-    private function execute(\PDOStatement $sth, array $bindParams)
+    protected function execute(\PDOStatement $sth, array $bindParams)
     {
         if ($sth->execute($bindParams)) {
             return true;
         }
 
         throw new \Exception(implode(' ', $sth->errorInfo()));
+    }
+
+    /**
+     * Возвращает параметр сортировки
+     * @return string
+     */
+    protected function orderBy()
+    {
+        return "`id`";
     }
 
     /**
