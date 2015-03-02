@@ -59,7 +59,7 @@ abstract class AModel
      * Возвращает первую запись, попадающую под параметр выборки
      * @param string $where параметр where
      * @param array $whereValues значения для подстновки
-     * @return array
+     * @return \stdClass
      */
     public function findOne($where = '', $whereValues = [])
     {

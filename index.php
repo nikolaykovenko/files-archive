@@ -21,6 +21,7 @@ $appHelper->setConfig($config);
  * TODO: Инициализацию компонентов нужно вынести в конфиг + использовать dependency injection container. Упрощено.
  */
 $appHelper
+    ->setComponent('fileSender', new \simpleCMS\core\FileSender())
     ->setComponent('dataHistory', new \simpleCMS\model\DataHistory())
     ->setComponent('usersModel', new \simpleCMS\model\Users())
     ->setComponent('authAgent', new \simpleCMS\auth\AuthAgent($appHelper->getComponent('usersModel')));

@@ -21,7 +21,7 @@
                 {% if item.deleted %}
                     [Файл удален]
                 {% else %}
-                    <a href="index.php?mode=download-file&amp;file={{ item.id }}"><span class="glyphicon glyphicon-download-alt"></span></a>
+                    <a href="index.php?mode=file-download&amp;id={{ item.id }}"><span class="glyphicon glyphicon-download-alt"></span></a>
                     <span class="glyphicon glyphicon-trash delete-link" data-delete-item="{{ item.id }}"></span>
                 {% endif %}
             </td>
